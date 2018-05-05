@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">  
+    <a class="navbar-brand" href="#">Chatting Application</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to "Home", root_path %>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          
+        <% if user_signed_in? %>
+          <li class="nav-item mr-4">
+            <span><%= current_user.email %>(<%= current_user.user_type %>)</span>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item active mr-4">
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
+
+          <li class="nav-item active">
+            <%= link_to "Sign In", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

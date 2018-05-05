@@ -1,0 +1,21 @@
+<div class="mt-5">
+	<p>Hello welcome to chatting application</p>
+	<%= link_to "New Message", new_message_path, :class => "btn btn-primary" %>
+	<p class="mt-5">Your Chats</p>
+	<% if @myChats.present? %>	
+		<div class="users">
+			<ul>
+				<% @myChats.all.each do |user| %>
+					<li>
+	          	<div class="user">
+	          		<%= link_to user.email, conversation_path(user.id) %>
+	          		<span> (<%= user.user_type %>) </span>
+	        		</div>
+	        </li>
+				<% end %>
+			</ul>
+		</div>
+	<% else %>
+		<span class="text-secondary"> No Chats Found</span>
+	<% end %>
+</div>

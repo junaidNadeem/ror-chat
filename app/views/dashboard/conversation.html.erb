@@ -1,0 +1,25 @@
+<div class="mt-5">
+	<% if @user.present? %>
+		<p>Your messages with <%= @user.email %> (<%= @user.user_type %>)</p>
+
+		<% if @messages.present? %>	
+			<div class="users mt-5">
+				<ul>
+					<% @messages.each do |message| %>
+						<li>
+		          	<div class="user">
+		          		<%= link_to message.sender.email, conversation_path(message.sender.id) %>
+		          		<span>  said: </span>
+		          		<p class="float-right"> <%= message.message %></p>
+		        		</div>
+		        </li>
+					<% end %>
+				</ul>
+			</div>
+		<% else %>
+			<span class="text-secondary"> No Chats Found</span>
+		<% end %>
+	<% else %>
+		<p> Select a valid user id</p>
+	<% end %>
+</div>
